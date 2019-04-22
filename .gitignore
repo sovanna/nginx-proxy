@@ -2,4 +2,5 @@
 *.key
 *.pem
 *.conf
+!nginx.conf
 *.well-known
