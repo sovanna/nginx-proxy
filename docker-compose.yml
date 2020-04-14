@@ -5,7 +5,7 @@ services:
   nginx:
     image: nginx
     container_name: nginx
-    restart: unless-stopped
+    restart: always
     ports:
       - "80:80"
       - "443:443"
@@ -21,7 +21,7 @@ services:
   nginx-gen:
     image: jwilder/docker-gen
     container_name: nginx-gen
-    restart: unless-stopped
+    restart: always
     volumes:
       - ./conf.d:/etc/nginx/conf.d
       - ./vhost.d:/etc/nginx/vhost.d
@@ -37,7 +37,7 @@ services:
       - NGINX_PROXY_CONTAINER=nginx
     image: jrcs/letsencrypt-nginx-proxy-companion
     container_name: nginx-letsencrypt
-    restart: unless-stopped
+    restart: always
     volumes:
       - ./conf.d:/etc/nginx/conf.d
       - ./vhost.d:/etc/nginx/vhost.d
