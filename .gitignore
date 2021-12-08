@@ -4,3 +4,8 @@
 *.conf
 !nginx.conf
 *.well-known
+
+acme/*
+certs/*
+conf.d/*
+html/*
