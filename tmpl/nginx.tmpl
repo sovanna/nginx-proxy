@@ -385,3 +385,19 @@ server {
 
 {{ end }}
 {{ end }}
+
+server {
+  listen 80 default_server;
+  listen [::]:80 default_server;
+  server_name localhost;
+
+  error_page 500 502 503 504 /error_50x.html;
+  location = /error_50x.html {
+    root /usr/share/nginx/html;
+    internal;
+  }
+
+  location / {
+  	return 503;
+  }
+}
