@@ -327,6 +327,15 @@ server {
 	{{ end }}
 	access_log /var/log/nginx/service-{{ $host }}-access.log vhost;
 
+  location ^~ /.well-known/acme-challenge/ {
+    auth_basic off;
+    auth_request off;
+    allow all;
+    root /usr/share/nginx/html;
+    try_files $uri =404;
+    break;
+  }
+
 	{{ if eq $network_tag "internal" }}
 	# Only allow traffic from internal clients
 	include /etc/nginx/network_internal.conf;
@@ -383,6 +392,7 @@ server {
 	{{ end }}
 	http2 on;
 	access_log /var/log/nginx/service-{{ $host }}-access.log vhost;
+
 	return 500;
 
 	ssl_certificate /etc/nginx/certs/default.crt;
