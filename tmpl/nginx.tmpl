@@ -263,8 +263,8 @@ server {
 	{{ end }}
 
 	{{ if (exists (printf "/etc/nginx/certs/%s.chain.pem" $cert)) }}
-	ssl_stapling on;
-	ssl_stapling_verify on;
+	#ssl_stapling on;
+	#ssl_stapling_verify on;
 	ssl_trusted_certificate {{ printf "/etc/nginx/certs/%s.chain.pem" $cert }};
 	{{ end }}
 
